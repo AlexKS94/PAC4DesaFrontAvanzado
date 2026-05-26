@@ -1,0 +1,60 @@
+<div class="table-container">
+  <table
+    mat-table
+    [dataSource]="plants"
+    class="plants-table animate__animated animate__fadeIn"
+  >
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Imagen</th>
+      <td mat-cell *matCellDef="let plant">
+        @if (plant.photos.length > 0) {
+          <img
+            class="table-image"
+            [src]="plant.photos[0].url"
+            [alt]="plant.taxon.name"
+          />
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="commonName">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let plant">
+        @if (plant.taxon.preferred_common_name) {
+          {{ plant.taxon.preferred_common_name }}
+        } @else {
+          {{ plant.taxon.name }}
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="scientificName">
+      <th mat-header-cell *matHeaderCellDef>Nombre científico</th>
+      <td mat-cell *matCellDef="let plant">
+        {{ plant.taxon.name }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="wikipediaUrl">
+      <th mat-header-cell *matHeaderCellDef>Enlace a Wikipedia</th>
+      <td mat-cell *matCellDef="let plant">
+        @if (plant.taxon.wikipedia_url) {
+          <a href="{{ plant.taxon.wikipedia_url }}">{{
+            plant.taxon.wikipedia_url
+          }}</a>
+        } @else {
+          Enlace no disponible
+        }
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="table-row"
+      (click)="selectPlant(row.id)"
+    ></tr>
+  </table>
+</div>

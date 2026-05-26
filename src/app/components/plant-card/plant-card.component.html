@@ -1,0 +1,27 @@
+<div class="cards-container">
+  @for (plant of plants; track plant.id; let i = $index) {
+    <mat-card
+      class="plant-card"
+      [style.animation-delay.ms]="i * 90"
+      (click)="selectPlant(plant.id)"
+    >
+      @if (plant.taxon.default_photo) {
+        <img
+          mat-card-image
+          [src]="plant.taxon.default_photo.medium_url"
+          [alt]="plant.taxon.name"
+        />
+      }
+
+      <mat-card-content>
+        @if (plant.taxon.preferred_common_name) {
+          <h2>
+            {{ plant.taxon.preferred_common_name.toLocaleUpperCase() }}
+          </h2>
+        } @else {
+          <h2>{{ plant.taxon.name.toLocaleUpperCase() }}</h2>
+        }
+      </mat-card-content>
+    </mat-card>
+  }
+</div>

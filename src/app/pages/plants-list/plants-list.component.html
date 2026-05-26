@@ -1,0 +1,39 @@
+<section class="plants-page">
+  <header class="plants-header">
+    <div>
+      <h1>Bienvenido a la biblioteca de las plantas</h1>
+      <p>
+        Descubre los diferentes tipos de plantas que existen y sus
+        características
+      </p>
+    </div>
+
+    <div class="view-actions">
+      <button mat-icon-button (click)="changeCardsView()">
+        <mat-icon>grid_view</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="changeTableView()">
+        <mat-icon>view_list</mat-icon>
+      </button>
+    </div>
+  </header>
+
+  @if (loading()) {
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
+  } @else {
+    @if (view() === "cards") {
+      <app-plant-card
+        [plants]="plants()"
+        (plantSelected)="gotToPlantDetail($event)"
+      />
+    } @else {
+      <app-plant-grid
+        [plants]="plants()"
+        (plantSelected)="gotToPlantDetail($event)"
+      />
+    }
+  }
+</section>

@@ -1,0 +1,53 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 0 2rem;
+}
+
+.plant-card {
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fillCard 0.45s ease forwards;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  color: white;
+
+  &:hover {
+    transform: translateY(-20px);
+  }
+
+  img {
+    height: 320px;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin: 16px 0 8px;
+  }
+
+  p {
+    margin: 8px 0;
+  }
+}
+@keyframes fillCard {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

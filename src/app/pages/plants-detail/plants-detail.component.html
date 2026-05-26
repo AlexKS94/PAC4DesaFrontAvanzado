@@ -1,0 +1,80 @@
+<section class="plant-detail-page">
+  @if (this.loading()) {
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
+  } @else {
+    @if (plant(); as plantDetail) {
+      <header class="detail-header">
+        <div>
+          @if (plantDetail.taxon.preferred_common_name) {
+            <h1>{{ plantDetail.taxon.preferred_common_name }}</h1>
+          } @else {
+            <h1>{{ plantDetail.taxon.preferred_common_name }}</h1>
+          }
+        </div>
+
+        <button class="back-button" (click)="goBack()">Volver</button>
+      </header>
+
+      <article class="detail-card animate__animated animate__fadeIn">
+        <div class="image-wrapper">
+          <img
+            class="detail-image"
+            [src]="plantDetail.taxon.default_photo?.medium_url"
+            [alt]="plantDetail.taxon.name"
+          />
+        </div>
+
+        <mat-accordion
+          class="details-accordion animate__animated animate__fadeIn"
+        >
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Mostrar todos los detalles</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="main-info">
+              <h2>Información principal</h2>
+
+              <p>
+                Nombre científico:
+                {{ plantDetail.taxon.name }}
+              </p>
+
+              <p>
+                Fotografiada el:
+                {{ plantDetail.observed_on || "Fecha desconocida" }}
+              </p>
+
+              <p>
+                Descripción:
+                {{
+                  plantDetail.description || "No hay descripción disponible."
+                }}
+              </p>
+              <p>
+                Enlace a wikipedia:
+                @if (plantDetail.taxon.wikipedia_url) {
+                  <a href="plantDetail.taxon.wikipedia_url">{{
+                    plantDetail.taxon.wikipedia_url
+                  }}</a>
+                } @else {
+                  No hay enlace disponible
+                }
+              </p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </article>
+    } @else {
+      <header class="detail-header">
+        <div>
+          <h1>No se ha encontrado la planta.</h1>
+        </div>
+
+        <button class="back-button" (click)="goBack()">Volver</button>
+      </header>
+    }
+  }
+</section>

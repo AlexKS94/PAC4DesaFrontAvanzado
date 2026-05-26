@@ -1,0 +1,36 @@
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.plants-table {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.table-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    color: #000000;
+    background-color: #90ee90;
+  }
+}
+
+.table-image {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
