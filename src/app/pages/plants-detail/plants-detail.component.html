@@ -56,9 +56,14 @@
               <p>
                 Enlace a wikipedia:
                 @if (plantDetail.taxon.wikipedia_url) {
-                  <a href="plantDetail.taxon.wikipedia_url">{{
-                    plantDetail.taxon.wikipedia_url
-                  }}</a>
+                  <a
+                    [href]="plantDetail.taxon.wikipedia_url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    (click)="$event.stopPropagation()"
+                  >
+                    {{ plantDetail.taxon.wikipedia_url }}
+                  </a>
                 } @else {
                   No hay enlace disponible
                 }
