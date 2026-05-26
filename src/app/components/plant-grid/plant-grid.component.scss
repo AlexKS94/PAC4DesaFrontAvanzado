@@ -1,8 +1,8 @@
 .table-container {
   width: 100%;
-  overflow-x: auto;
   padding-left: 2rem;
   padding-right: 2rem;
+  box-sizing: border-box;
 }
 
 .plants-table {
@@ -30,7 +30,11 @@
 
 @media (max-width: 768px) {
   .table-container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 1rem;
+    overflow-x: auto;
+  }
+
+  .plants-table {
+    min-width: 850px;
   }
 }

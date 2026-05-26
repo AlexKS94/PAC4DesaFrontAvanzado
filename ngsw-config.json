@@ -8,7 +8,6 @@
       "resources": {
         "files": [
           "/favicon.ico",
-          "/index.csr.html",
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
@@ -59,7 +58,7 @@
         "strategy": "freshness",
         "maxSize": 200,
         "maxAge": "1h",
-        "timeout": "3s"
+        "timeout": "0u"
       }
     }
   ]
