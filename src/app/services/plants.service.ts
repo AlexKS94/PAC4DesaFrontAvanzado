@@ -22,8 +22,8 @@ export class PlantsService {
       .set('photos', 'true')
       .set('per_page', '30')
       .set('page', page)
-      .set('order', 'desc')
-      .set('order_by', 'created_at');
+      .set('order', 'asc')
+      .set('order_by', 'id');
 
     return this.http.get<PlantListResponse>(`${this.apiUrl}/observations`, {
       params,
